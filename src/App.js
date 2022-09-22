@@ -31,7 +31,7 @@ class App extends React.Component {
                     <img className='dynamoLogo' src={base64DynamoLogo}></img>
                   </div>
                 </Row>
-                <Row className='welcomeToDynamo'>
+                <Row className='welcomeRow'>
                   <div >
                     Welcome to Dynamo!
                   </div>
