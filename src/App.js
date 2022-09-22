@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { loadingDone: false }
+    this.state = { loadingDone: true }
     window.dynamoLoaded = this.dynamoLoaded.bind(this);
   }
 

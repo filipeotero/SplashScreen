@@ -1,6 +1,8 @@
 
 import React from 'react';
 import './Static.css'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 class Static extends React.Component {
     constructor() {
@@ -8,7 +10,13 @@ class Static extends React.Component {
     }
 
     render() {
-        return <div>Static</div>
+        return (
+            <Container>
+                <Row>Button</Row>
+                <Row>Button</Row>
+                <Row>Button</Row>
+            </Container>
+        )
     }
 }
 
