@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Dynamic from './Dynamic';
+import Static from './Static';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,8 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
+    this.state = { loadingDone: false }
+    window.dynamoLoaded = this.dynamoLoaded.bind(this);
+  }
+
+  dynamoLoaded() {
+    this.setState({ loadingDone: true })
   }
 
   render() {
@@ -33,12 +40,15 @@ class App extends React.Component {
             </Row>
             <Row className='bottomMenu'>
               <Col>
-                <Dynamic/>
+                {
+                  this.state.loadingDone ? <Static /> : <Dynamic />
+                }
+
               </Col>
             </Row>
           </Col>
           <Col className='p-0' >
-              <img src={base64DynamoBackground}></img> 
+            <img src={base64DynamoBackground}></img>
           </Col>
         </Row>
       </Container>

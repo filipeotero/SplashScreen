@@ -9,7 +9,7 @@ module.exports = (env) => {
             app: './src/index.js',
         },
         output: {
-            path: path.join(__dirname, '/dist/build'),
+            path: path.join(__dirname, 'public/'),
             filename: 'index.bundle.js',
             clean: true,
         },
