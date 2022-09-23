@@ -12,6 +12,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.setBackgroundImage();
+    this.state = { welcomeToDynamoTitle: "Welcome to Dynamo!" };
+
+    //This is a reference to the DOM of the project that will be called in Dynamo to set the title of the splash screen (Defined by 'Welcome to Dynamo!' by default)
+    window.setWelcomeDynamoTitle = this.setWelcomeDynamoTitle.bind(this);
   }
 
   setBackgroundImage() {
@@ -34,7 +38,7 @@ class App extends React.Component {
                 </Row>
                 <Row className='welcomeRow'>
                   <div >
-                    Welcome to Dynamo!
+                    {this.state.welcomeToDynamoTitle}
                   </div>
                 </Row>
               </Col>
@@ -51,6 +55,10 @@ class App extends React.Component {
         </Row>
       </Container>
     )
+  }
+
+  setWelcomeDynamoTitle(title) {
+    this.setState({ welcomeToDynamoTitle: title })
   }
 }
 

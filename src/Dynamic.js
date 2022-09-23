@@ -11,6 +11,7 @@ class Dynamic extends React.Component {
             loadDescription: ""
         }
 
+        //This is a reference to the DOM of the project that will be called in Dynamo to fill the loading properties
         window.setBarProperties = this.setBarProperties.bind(this);
     }
 
