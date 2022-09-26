@@ -11,10 +11,21 @@ class Static extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Row>Button</Row>
-                <Row>Button</Row>
-                <Row>Button</Row>
+            <Container className='pr-3'>
+                <Row className='mt-3'>
+                    <button onClick={''}>Sign in</button>
+                </Row>
+                <Row className='mt-3'>
+                    <button onClick={''}>Launch</button>
+                </Row>
+                <Row className='mt-3'>
+                    <button onClick={''}>Settings Import</button>
+                </Row>
+                <Row className='mt-3'>
+                    <div className='p-0 checkboxAllow'>
+                        <input type="checkbox" /> fss
+                    </div>
+                </Row>
             </Container>
         )
     }
