@@ -13,21 +13,25 @@ class Static extends React.Component {
         return (
             <Container className='pr-3'>
                 <Row className='mt-3'>
-                    <button onClick={''}>Sign in</button>
+                    <button className='primaryButton' onClick={this.menuOnClick}>Sign in</button>
                 </Row>
                 <Row className='mt-3'>
-                    <button onClick={''}>Launch</button>
+                    <button className='secondaryButton' onClick={this.menuOnClick}>Launch Dynamo 2.14.0</button>
                 </Row>
                 <Row className='mt-3'>
-                    <button onClick={''}>Settings Import</button>
+                    <button  className='primaryButton' onClick={this.menuOnClick}>Import settings</button>
                 </Row>
                 <Row className='mt-3'>
                     <div className='p-0 checkboxAllow'>
-                        <input type="checkbox" /> fss
+                        <input type="checkbox" /> Don't show this screen again
                     </div>
                 </Row>
             </Container>
         )
+    }
+
+    menuOnClick() {
+
     }
 }
 

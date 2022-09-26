@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Dynamic from './Dynamic';
+import Static from './Static';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,10 +13,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.setBackgroundImage();
-    this.state = { welcomeToDynamoTitle: "Welcome to Dynamo!" };
+    this.state = {
+      welcomeToDynamoTitle: "Welcome to Dynamo!",
+      loadingDone: false
+    };
 
     //This is a reference to the DOM of the project that will be called in Dynamo to set the title of the splash screen (Defined by 'Welcome to Dynamo!' by default)
     window.setWelcomeDynamoTitle = this.setWelcomeDynamoTitle.bind(this);
+
+    window.setLoadingDone = this.setLoadingDone.bind(this);
   }
 
   setBackgroundImage() {
@@ -26,9 +32,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container className='fill' fluid="md">
+      <Container className='fill'>
         <Row>
-          <Col className='menuOptions' >
+          <Col className='menuOptions px-4' >
             <Row className='bottomMenu'>
               <Col>
                 <Row>
@@ -45,7 +51,9 @@ class App extends React.Component {
             </Row>
             <Row className='bottomMenu'>
               <Col>
-                <Dynamic />
+                {
+                  this.state.loadingDone ? <Static /> : <Dynamic />
+                }
               </Col>
             </Row>
           </Col>
@@ -58,7 +66,16 @@ class App extends React.Component {
   }
 
   setWelcomeDynamoTitle(title) {
-    this.setState({ welcomeToDynamoTitle: title })
+    this.setState({
+      welcomeToDynamoTitle: title, loadingDone: false
+    })
+  }
+
+  setLoadingDone() {
+    this.setState({
+      welcomeToDynamoTitle: this.state.welcomeToDynamoTitle,
+      loadingDone: true
+    })
   }
 }
 
