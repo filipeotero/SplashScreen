@@ -13,6 +13,8 @@ const importStatusEnum = {
     success: 3
 }
 
+let checked = false;
+
 class Static extends React.Component {
 
     constructor() {
@@ -40,14 +42,14 @@ class Static extends React.Component {
                         <input type="file" className='primaryButton' onChange={(e) => this.readFile(e)} />
                         <div className='buttonLabel'>
                             <img src={warningIcon} alt='' hidden={this.state.importStatus !== importStatusEnum.error}></img>
-                            <img src={checkMarkIcon}  alt='' hidden={this.state.importStatus !== importStatusEnum.success}></img>
+                            <img src={checkMarkIcon} alt='' hidden={this.state.importStatus !== importStatusEnum.success}></img>
                             <div className='importSettingsText'><span >{this.state.importSettingsTitle}</span></div>
                         </div>
                     </label>
                 </Row>
                 <Row className='mt-3'>
                     <label className='p-0 checkboxShowScreenAgain '>
-                        <input type="checkbox" className='checkBoxStyle' />
+                        <input type="checkbox" onChange={this.handleChange} className='checkBoxStyle' />
                         <span className="checkmark"> {this.props.showScreenAgainLabel}  </span>
                     </label>
                 </Row>
@@ -55,16 +57,20 @@ class Static extends React.Component {
         )
     }
 
+    //Opens a page to signin
     signIn() {
         window.open("https://accounts.autodesk.com/", "_blank");
     }
 
+    //This method calls another method from Dynamo to actually launch it
     launchDynamo() {
         if (chrome.webview !== undefined) {
-            chrome.webview.hostObjects.scriptObject.LaunchDynamo();
+            //The 'checked' is a boolean that represents if the user don't want to show the Static screen again
+            chrome.webview.hostObjects.scriptObject.LaunchDynamo(checked);
         }
     }
 
+    //Reads the file and send the string to a method inside Dynamo called 'ImportSettings'
     readFile(event) {
         let file = event.target.files[0];
         if (file) {
@@ -74,11 +80,17 @@ class Static extends React.Component {
         }
     }
 
+    //Set the result of the file that was imported by Dynamo
     setImportStatus(importStatus) {
         this.setState({
             importStatus: importStatus.status,
             importSettingsTitle: importStatus.description
         });
+    }
+
+    //Every time the checkbox is clicked, this method is called
+    handleChange() {
+        checked = !checked;
     }
 }
 
