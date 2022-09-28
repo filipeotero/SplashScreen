@@ -19,7 +19,7 @@ class App extends React.Component {
     };
 
     //This is a reference to the DOM of the project that will be called in Dynamo to set the title of the splash screen (Defined by 'Welcome to Dynamo!' by default)
-    window.setWelcomeDynamoTitle = this.setWelcomeDynamoTitle.bind(this);
+    window.setLabels = this.setLabels.bind(this);
 
     window.setLoadingDone = this.setLoadingDone.bind(this);
   }
@@ -39,7 +39,7 @@ class App extends React.Component {
               <Col>
                 <Row>
                   <div>
-                    <img className='dynamoLogo' src={base64DynamoLogo}></img>
+                    <img className='dynamoLogo' alt='' src={base64DynamoLogo}></img>
                   </div>
                 </Row>
                 <Row className='welcomeRow'>
@@ -52,22 +52,31 @@ class App extends React.Component {
             <Row className='bottomMenu'>
               <Col>
                 {
-                  this.state.loadingDone ? <Static /> : <Dynamic />
+                  this.state.loadingDone ?
+                    <Static
+                      signInTitle={this.state.signInTitle}
+                      welcomeToDynamoTitle={this.state.welcomeToDynamoTitle}
+                      launchTitle={this.state.launchTitle}
+                      showScreenAgainLabel={this.state.showScreenAgainLabel}
+                    /> : <Dynamic />
                 }
               </Col>
             </Row>
           </Col>
           <Col className='p-0' >
-            <img className='screenBackground' src={base64DynamoBackground}></img>
+            <img className='screenBackground' alt='' src={base64DynamoBackground}></img>
           </Col>
         </Row>
       </Container>
     )
   }
 
-  setWelcomeDynamoTitle(title) {
+  setLabels(labels) {
     this.setState({
-      welcomeToDynamoTitle: title, loadingDone: false
+      welcomeToDynamoTitle: labels.welcomeToDynamoTitle,
+      signInTitle: labels.signInTitle,
+      launchTitle: labels.launchTitle,
+      showScreenAgainLabel: labels.showScreenAgainLabel
     })
   }
 
