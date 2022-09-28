@@ -5,6 +5,8 @@ import './Static.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { warningIcon, checkMarkIcon } from './encodedImages';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 /*global chrome*/
 
 const importStatusEnum = {
@@ -22,7 +24,8 @@ class Static extends React.Component {
 
         this.state = {
             importStatus: importStatusEnum.none,
-            importSettingsTitle: "Import settings"
+            importSettingsTitle: "Import settings",
+            errorDescription: "Something went wrong when importing your custom setting file. Please try again or proceed with default settings."
         }
 
         window.setImportStatus = this.setImportStatus.bind(this)
@@ -38,14 +41,26 @@ class Static extends React.Component {
                     <button className='secondaryButton' onClick={this.launchDynamo}>{this.props.launchTitle}</button>
                 </Row>
                 <Row className='mt-3'>
-                    <label className='primaryButton px-1'>
-                        <input type="file" className='primaryButton' onChange={(e) => this.readFile(e)} />
-                        <div className='buttonLabel'>
-                            <img src={warningIcon} alt='' hidden={this.state.importStatus !== importStatusEnum.error}></img>
-                            <img src={checkMarkIcon} alt='' hidden={this.state.importStatus !== importStatusEnum.success}></img>
-                            <div className='importSettingsText'><span >{this.state.importSettingsTitle}</span></div>
-                        </div>
-                    </label>
+                    <OverlayTrigger
+                        key={'bottom'}
+                        placement={'bottom'}
+                        overlay={
+                            <Tooltip
+                                hidden={this.state.importStatus !== importStatusEnum.error}
+                            >
+                                {this.state.errorDescription}
+                            </Tooltip>
+                        }
+                    >
+                        <label className='primaryButton px-1'>
+                            <input type="file" className='primaryButton' onChange={(e) => this.readFile(e)} />
+                            <div className='buttonLabel'>
+                                <img src={warningIcon} alt='' hidden={this.state.importStatus !== importStatusEnum.error}></img>
+                                <img src={checkMarkIcon} alt='' hidden={this.state.importStatus !== importStatusEnum.success}></img>
+                                <div className='importSettingsText'><span >{this.state.importSettingsTitle}</span></div>
+                            </div>
+                        </label>
+                    </OverlayTrigger>
                 </Row>
                 <Row className='mt-3'>
                     <label className='p-0 checkboxShowScreenAgain '>
@@ -84,7 +99,8 @@ class Static extends React.Component {
     setImportStatus(importStatus) {
         this.setState({
             importStatus: importStatus.status,
-            importSettingsTitle: importStatus.description
+            importSettingsTitle: importStatus.importSettingsTitle,
+            errorDescription: importStatus.errorDescription
         });
     }
 
