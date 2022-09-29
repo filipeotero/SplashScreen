@@ -14,8 +14,6 @@
     border-radius: 2px;
     background-color: #363636;
     cursor: pointer;
-    text-align: center;
-    width: 100%;
     height: 24px;
 }
 
@@ -46,8 +44,11 @@ input[type="file"] {
 }
 
 .tooltip>div.tooltip-inner {
+    text-align: left;
     background-color: white !important;
     color: black !important;
+    font-size: 11px;
+    pointer-events: none !important;
 }
 
 .tooltip.show {
@@ -55,6 +56,10 @@ input[type="file"] {
 }
 
 .tooltip-arrow {
-    color: black !important;
+    color: white !important;
     --bs-tooltip-bg: white !important;
+}
+
+.tooltip{
+    --bs-tooltip-border-radius: 2px !important;
 }

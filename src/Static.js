@@ -42,16 +42,12 @@ class Static extends React.Component {
                 </Row>
                 <Row className='mt-3'>
                     <OverlayTrigger
-                        key={'bottom'}
-                        placement={'bottom'}
+                        placement={'right'}
                         overlay={
-                            <Tooltip
-                                hidden={this.state.importStatus !== importStatusEnum.error}
-                            >
+                            <Tooltip hidden={this.state.importStatus !== importStatusEnum.error} id='button-tooltip'>
                                 {this.state.errorDescription}
                             </Tooltip>
-                        }
-                    >
+                        }>
                         <label className='primaryButton px-1'>
                             <input type="file" className='primaryButton' onChange={(e) => this.readFile(e)} />
                             <div className='buttonLabel'>
