@@ -71,6 +71,7 @@ class App extends React.Component {
     )
   }
 
+  //This method sets the labels of the splash screen as an option of localization
   setLabels(labels) {
     this.setState({
       welcomeToDynamoTitle: labels.welcomeToDynamoTitle,
@@ -80,9 +81,9 @@ class App extends React.Component {
     })
   }
 
+  //This methos is called when the loading is done from Dynamo side
   setLoadingDone() {
     this.setState({
-      welcomeToDynamoTitle: this.state.welcomeToDynamoTitle,
       loadingDone: true
     })
   }
