@@ -46,6 +46,7 @@ class Dynamic extends React.Component {
             loadDescription: loadDescription,
             loadingTime: loadingTime
         })
+        document.getElementsByClassName('progress-bar-indicator')[0].style.display = 'flex'
     }
 }
 
