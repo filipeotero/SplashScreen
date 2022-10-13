@@ -87,7 +87,6 @@ class Static extends React.Component {
         if (file) {
             var fr = new FileReader();
             fr.onload = function () {
-                console.log(fr.result)
                 if (chrome.webview !== undefined) {
                     chrome.webview.hostObjects.scriptObject.ImportSettings(fr.result);
                 }
