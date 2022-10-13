@@ -126,12 +126,6 @@ class Static extends React.Component {
         }
     }
 
-
-    //Opens a page to signin
-    signIn() {
-        window.open('https://accounts.autodesk.com/', '_blank');
-    }
-
     //This method calls another method from Dynamo to actually launch it
     launchDynamo() {
         if (chrome.webview !== undefined) {
