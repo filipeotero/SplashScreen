@@ -17,36 +17,36 @@ class Dynamic extends React.Component {
   }
 
   render() {
-      return (
-          <div className='dynamicOptions'>
-              <div >
-                  Dynamo core {this.state.dynamoVersion}
-              </div>
-              <div>
-                  <div className="progress-bar-container">
-                      <div className="progress-bar-indicator" style={{ width: this.state.barSize }} ></div>
-                  </div>
-              </div>
-              <div >
-                  {this.state.loadDescription}
-              </div>
-              <br/>
-              <br/>
-              <div className='loadingTimeFooter' >
-                  {this.state.loadingTime}
-              </div>                
+    return (
+      <div className='dynamicOptions'>
+        <div >
+                    Dynamo core {this.state.dynamoVersion}
+        </div>
+        <div>
+          <div className='progress-bar-container'>
+            <div className='progress-bar-indicator' style={{ width: this.state.barSize }} ></div>
           </div>
-      );
+        </div>
+        <div >
+          {this.state.loadDescription}
+        </div>
+        <br />
+        <br />
+        <div className='loadingTimeFooter' >
+          {this.state.loadingTime}
+        </div>
+      </div>
+    );
   }
 
   setBarProperties(dynamoVersion, loadDescription, barSize, loadingTime) {
-      this.setState({ 
-          barSize: barSize,
-          dynamoVersion: dynamoVersion,
-          loadDescription: loadDescription,
-          loadingTime: loadingTime
-      })
-      document.getElementsByClassName('progress-bar-indicator')[0].style.display = 'flex'
+    this.setState({
+      barSize: barSize,
+      dynamoVersion: dynamoVersion,
+      loadDescription: loadDescription,
+      loadingTime: loadingTime
+    });
+    document.getElementsByClassName('progress-bar-indicator')[0].style.display = 'flex';
   }
 }
 
