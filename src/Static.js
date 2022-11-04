@@ -23,11 +23,11 @@ class Static extends React.Component {
 
     this.state = {
       importStatus: importStatusEnum.none,
-      importSettingsTitle: 'Import settings',
       errorDescription: 'Something went wrong when importing your custom setting file. Please try again or proceed with default settings.',
       signInTitle: this.props.signInTitle,
       signInStatus: this.props.signInStatus,
-      loadingTime: 'Total loading time: '
+      loadingTime: 'Total loading time: ',
+      importSettingsTitle: this.props.importSettingsTitle
     };
 
     window.setImportStatus = this.setImportStatus.bind(this);
@@ -59,12 +59,10 @@ class Static extends React.Component {
             overlay={
               <Tooltip
                 hidden={this.state.importStatus !== importStatusEnum.error}
-                id='button-tooltip'
-              >
+                id='button-tooltip'>
                 {this.state.errorDescription}
               </Tooltip>
-            }
-          >
+            }>
             <label className='primaryButton px-1'>
               <input
                 type='file'
@@ -76,13 +74,11 @@ class Static extends React.Component {
                 <img
                   src={warningIcon}
                   alt=''
-                  hidden={this.state.importStatus !== importStatusEnum.error}
-                ></img>
+                  hidden={this.state.importStatus !== importStatusEnum.error}></img>
                 <img
                   src={checkMarkIcon}
                   alt=''
-                  hidden={this.state.importStatus !== importStatusEnum.success}
-                ></img>
+                  hidden={this.state.importStatus !== importStatusEnum.success}></img>
                 <div className='importSettingsText'>
                   <span>{this.state.importSettingsTitle}</span>
                 </div>
@@ -95,8 +91,7 @@ class Static extends React.Component {
             <input
               type='checkbox'
               onChange={this.handleChange}
-              className='checkBoxStyle'
-            />
+              className='checkBoxStyle' />
             <span className='checkmark'>
               {' '}
               {this.props.showScreenAgainLabel}{' '}
@@ -199,14 +194,16 @@ class Static extends React.Component {
 Static.defaultProps = {
   signInTitle: 'Sign in',
   launchTitle: 'Launch Dynamo',
-  showScreenAgainLabel: 'Don\'t show this screen again'
+  showScreenAgainLabel: 'Don\'t show this screen again',
+  importSettingsTitle: 'Import Settings',
 };
 
 Static.propTypes = {
   signInTitle: PropTypes.string,
   launchTitle: PropTypes.string,
   showScreenAgainLabel: PropTypes.string,
-  signInStatus: PropTypes.bool
+  signInStatus: PropTypes.bool,
+  importSettingsTitle: PropTypes.string
 };
 
 export default Static;
