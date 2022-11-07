@@ -124,8 +124,8 @@ class Static extends React.Component {
         btn.disabled = true;
 
         this.setState({ signInTitle: 'Signing In' });
-        var ret2 = await chrome.webview.hostObjects.scriptObject.SignIn();
-        this.setState({ signInStatus: ret2 });
+        var status = await chrome.webview.hostObjects.scriptObject.SignIn();
+        this.setState({ signInStatus: status });
 
         btn.classList.remove('disableButton');
         btn.disabled = false;
