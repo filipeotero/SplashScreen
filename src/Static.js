@@ -190,14 +190,13 @@ class Static extends React.Component {
 }
 
 Static.defaultProps = {
-  signInTitle: 'Sign in',
-  signingInTitle: 'Siging in',
-  signOutTitle: 'Sign out',
+  signInTitle: 'Sign In',
+  signingInTitle: 'Signing In',
+  signOutTitle: 'Sign Out',
   launchTitle: 'Launch Dynamo',
   showScreenAgainLabel: 'Don\'t show this screen again',
   importSettingsTitle: 'Import Settings',
-  importSettingsTooltipDescription: 'You can import custom settings here, which will overwrite your current settings. If you\'d like to preserve a copy of your current settings, export them before importing new settings. Settings not shown in the Preferences panel will be applied once Dynamo and any host program restarts.'
-  
+  importSettingsTooltipDescription: 'You can import custom settings here, which will overwrite your current settings. If you\'d like to preserve a copy of your current settings, export them before importing new settings. Settings not shown in the Preferences panel will be applied once Dynamo and any host program restarts.'  
 };
 
 Static.propTypes = {
